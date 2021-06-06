@@ -38,9 +38,15 @@ public class sign_Activity extends AppCompatActivity {
 
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
 
-        awesomeValidation.addValidation( this, R.id.txt_signUsername, "^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$", "Incorrect Username");
-        awesomeValidation.addValidation(this,email, Patterns.EMAIL_ADDRESS, "Incorrect Email");
-        awesomeValidation.addValidation(this, phone, "^[2-9]{2}[0-9]{8}$", "Incorrect Phone");
+        awesomeValidation.addValidation(this, R.id.txt_username,"^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$", R.string.invalid_name);
+        awesomeValidation.addValidation(this, R.id.txt_signEmail, Patterns.EMAIL_ADDRESS, R.string.invalid_email);
+        String regexPassword = ".{8,}";
+        awesomeValidation.addValidation(this, R.id.txt_signPassword, regexPassword, R.string.invalid_password);
+        awesomeValidation.addValidation(this, R.id.txt_signPassword2, R.id.txt_signPassword, R.string.invalid_confirm_password);
+
+        awesomeValidation.addValidation(this, R.id.txt_signPhone, "^[+]?[0-9]{10,13}$", R.string.invalid_phone);
+
+
 
         singButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,10 +54,8 @@ public class sign_Activity extends AppCompatActivity {
 
                 //isValid   = CheckAllFields();
 
-                if () {
-                    Intent intent2 = new Intent(sign_Activity.this, MainActivity.class);
-                    startActivity(intent2);
-                }
+                Intent intent2 = new Intent(sign_Activity.this, MainActivity.class);
+                startActivity(intent2);
             }
         });
     }
