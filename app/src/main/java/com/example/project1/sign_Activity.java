@@ -35,8 +35,27 @@ public class sign_Activity extends AppCompatActivity {
         email=findViewById(R.id.txt_signEmail);
         phone= findViewById(R.id.txt_signPhone);
         singButton = findViewById(R.id.btn_signup2);
-
         awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
+
+
+
+        singButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //isValid   = CheckAllFields();
+                addValidationToView();
+                if(awesomeValidation.validate()) {
+
+                    Intent intent2 = new Intent(sign_Activity.this, MainActivity.class);
+                    startActivity(intent2);
+                }
+            }
+        });
+    }
+
+    private void addValidationToView(){
+
 
         awesomeValidation.addValidation(this, R.id.txt_username,"^[A-Za-z\\s]{1,}[\\.]{0,1}[A-Za-z\\s]{0,}$", R.string.invalid_name);
         awesomeValidation.addValidation(this, R.id.txt_signEmail, Patterns.EMAIL_ADDRESS, R.string.invalid_email);
@@ -47,17 +66,6 @@ public class sign_Activity extends AppCompatActivity {
         awesomeValidation.addValidation(this, R.id.txt_signPhone, "^[+]?[0-9]{10,13}$", R.string.invalid_phone);
 
 
-
-        singButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //isValid   = CheckAllFields();
-
-                Intent intent2 = new Intent(sign_Activity.this, MainActivity.class);
-                startActivity(intent2);
-            }
-        });
     }
    /* private boolean CheckAllFields() {
         if (username.length() == 0) {

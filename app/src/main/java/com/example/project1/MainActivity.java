@@ -10,6 +10,8 @@
 package com.example.project1;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.widget.Button;
 import android.os.Bundle;
 import android.view.View;
@@ -86,6 +88,8 @@ public class MainActivity extends AppCompatActivity
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, sign_Activity.class);
+                startActivity(intent);
 
             }
         });
